@@ -1,7 +1,3 @@
-<script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
 # DuplicateTextDetection
 以Quora重复问题检测为例，利用Transformer作为特征提取器，构建ESIM模型进行分析。
 
@@ -25,7 +21,9 @@
 
 * 对向量进行局部推断，计算两个句子之间词与词的相似度：
 
-  
+  ```text
+  ![](http://latex.codecogs.com/gif.latex?\\e_{ij}=a_i^Tb_j)
+  ```
 
 
 
