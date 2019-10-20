@@ -1,14 +1,31 @@
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 # DuplicateTextDetection
-主要针对Quora的重复问题检测问题，利用ESIM和Transformer进行建模分析。
+以Quora重复问题检测为例，利用Transformer作为特征提取器，构建ESIM模型进行分析。
 
-###预处理阶段
+###模型流程
 
-主要利用torchtext进行数据的预处理，基本流程为：
+1. 利用torchtext进行数据的预处理：
 
-1. 定义不同数据的处理操作
-2. 加载数据
-3. 创建词汇表，通过词汇表把词语和预训练的词向量连接起来
-4. 将处理后的数据batch化
+* 定义不同数据的处理操作；
+
+* 加载数据；
+
+* 创建词汇表，通过词汇表把词语和预训练的词向量连接起来；
+
+* 将处理后的数据batch化；
+
+2. 正式建模：
+
+* 建立embedding层，对输入进行embedding；
+
+* 利用Transformer对数据再次进行embedding，自注意力机制的利用为词向量引入上下文信息；
+
+* 对向量进行局部推断，计算两个句子之间词与词的相似度：
+
+  
 
 
 
@@ -22,3 +39,4 @@
 2. 有必要处理句子中的标点符号吗，如何处理？
 3. 反向传播对padding有影响吗，假如我们通过LSTM提取句子的上下文信息，之后得到的词向量也包括padding的部分，那么这部分对模型的学习有什么影响？
 4. 句子长度差异过大时，对于较短的句子，padding对模型有影响吗？
+
